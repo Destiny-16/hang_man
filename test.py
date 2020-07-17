@@ -1,4 +1,4 @@
-print('this is Sam')
-print ("hello world")
-print("changed")
+#### hang_man using python 3.8
+import tkinter as tk
+window = tk.Tk()               ## creating windows game
 
