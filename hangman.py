@@ -1,13 +1,29 @@
 from tkinter import *
+from tkinter import messagebox
 from random import randrange
+from random import randint
 
-root = Tk()
+def makebody():
+    global mistake
+    mistake+=1
+    if mistake ==1:
+        dibujo.create_oval(100,150,160,210) #head
+    if mistake ==2:
+        dibujo.create_line(130,210,130,280,width=3) #column
+    if mistake ==3 :
+        dibujo.create_line(130,210,150,230,width =3) # hand  l
+    if mistake ==4:
+        dibujo.create_line(130,210,110,230,width=3) #hand r
+    if mistake ==5:
+        dibujo.create_line(130,280,150,300,width = 3) #leg l
+    if mistake ==6:
+        dibujo.create_line(130,280,110,300,width =3) # leg r
+        messagebox.showinfo("Perdiste","Iniciando Descarga")
+        root.destroy()
+    pass
+mistake =0
 
-
-root.geometry("500x500")
-
-root.title("Hang Man Game")
-
+###########################################################words############
 f = open("words.txt", "r")
 
 
@@ -23,9 +39,31 @@ def buttonClick(letter) :
         if(answer[count] == letter):
             word[count] = letter
             print(word)
+        else :
+            makebody()
+        
         count = count + 1
+        
+      
+    wordLabel.configure(text=word)
 
-    wordLabel.configure(text=word)   
+
+
+
+#################################making window#############################################
+root = Tk()
+
+
+root.geometry("500x500")
+
+root.title("Hang Man Game")
+
+root.resizable(0,0)
+
+#####################################################################
+
+
+
     
   
             
@@ -87,9 +125,17 @@ yButton.place(x=60, y=175)
 zButton.place(x=80, y=175)
 
 
-                      
+#############################################################################
+frameahorcado=Frame(root,width=250,height=600)
+frameahorcado.place(x=250,y=0)
+dibujo=Canvas(frameahorcado,width=250,height=600)
+dibujo.place(x=0,y=0)
+dibujo.create_line(10,400,200,400,width=3)
+dibujo.create_line(20,400,20,100,width=3)
+dibujo.create_line(20,100,130,100,width=3)
+dibujo.create_line(130,100,130,150,width=3)                      
 
-
+#############################################
 
 root.mainloop()
 
