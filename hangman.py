@@ -3,6 +3,9 @@ from tkinter import messagebox
 from random import randrange
 from random import randint
 
+mistake = 0
+
+
 def makebody():
     global mistake
     mistake+=1
@@ -20,8 +23,8 @@ def makebody():
         dibujo.create_line(130,280,110,300,width =3) # leg r
         messagebox.showinfo("Perdiste","Iniciando Descarga")
         root.destroy()
-    pass
-mistake =0
+    print(mistake)
+
 
 ###########################################################words############
 f = open("words.txt", "r")
@@ -35,14 +38,18 @@ word = [""] * (len(answer)-1)
 
 def buttonClick(letter) :
     count = 0
+    found = False
     for char in answer:
         if(answer[count] == letter):
             word[count] = letter
+            found = True
             print(word)
-        else :
-            makebody()
+
         
         count = count + 1
+
+    if(found == False):
+        makebody()
         
       
     wordLabel.configure(text=word)
