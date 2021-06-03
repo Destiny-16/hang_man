@@ -21,7 +21,7 @@ def makebody():
         dibujo.create_line(130,280,150,300,width = 3) #leg l
     if mistake ==6:
         dibujo.create_line(130,280,110,300,width =3) # leg r
-        messagebox.showinfo("Perdiste","Iniciando Descarga")
+        messagebox.showinfo("Perdiste", "You Lose")
         root.destroy()
     print(mistake)
 
@@ -50,8 +50,9 @@ def buttonClick(letter) :
 
     if(found == False):
         makebody()
-        
-      
+    else:
+        hasWon(word, answer)
+
     wordLabel.configure(text=word)
 
 
@@ -69,6 +70,20 @@ root.resizable(0,0)
 
 #####################################################################
 
+def hasWon (word, answer):
+    
+    string = ""
+    string = string.join(word)
+    answer = answer.strip()
+
+
+    if(string == answer):
+        messagebox.showinfo("Perdiste", "You Win")
+        root.destroy()
+ 
+
+    
+    
 
 
     
